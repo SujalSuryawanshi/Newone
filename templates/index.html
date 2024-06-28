@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% for post in post %}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{post.owner}}</p>
+                <p class="card-text">{{post.body}}</p>
+                <p class="card-text">{{post.choices}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</li>
+<a class="nav-link me-4" href="{% url 'add' %}">Add</a>
+</li>
+{% else %}
+<li class="nav-item">
+    <a href="{% url 'login' %}">Login</a> <br>           
+</li>
+{% endif %}
+{% endblock content %}
